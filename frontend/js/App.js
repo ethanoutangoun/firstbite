@@ -2,14 +2,14 @@ import * as Sentry from "@sentry/react";
 import React from "react";
 import { Provider } from "react-redux";
 
-import Home from "./pages/Home";
+import Routes from "./routes";
 import configureStore from "./store";
 
 const store = configureStore({});
 const App = () => (
   <Sentry.ErrorBoundary fallback={<p>An error has occurred</p>}>
     <Provider store={store}>
-      <Home />
+      <Routes />
     </Provider>
   </Sentry.ErrorBoundary>
 );
