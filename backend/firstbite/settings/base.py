@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "defender",
     "common",
     "users",
+    "equipment",
 ]
 
 MIDDLEWARE = [

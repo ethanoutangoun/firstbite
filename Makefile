@@ -48,3 +48,6 @@ docker_migrate:
 
 docker_create_superuser:
 	docker-compose run --rm backend python manage.py createsuperuser
+
+docker_openshell:
+	docker-compose run --rm backend python manage.py shell

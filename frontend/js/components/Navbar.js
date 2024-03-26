@@ -3,13 +3,14 @@
 import "../../sass/components/navbar.scss";
 import { useHistory } from "react-router-dom";
 
-
 const Navbar = () => {
   const history = useHistory();
 
   return (
     <nav className="navbar">
-      <h1 onClick={() => history.push("/")}>Navbar</h1>
+      <div className="navbar-content">
+        <h1 onClick={() => history.push("/")}>Navbar</h1>
+      </div>
     </nav>
   );
 };
