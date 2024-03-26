@@ -44,3 +44,7 @@ docker_makemigrations:
 
 docker_migrate:
 	docker-compose run --rm backend python manage.py migrate
+
+
+docker_create_superuser:
+	docker-compose run --rm backend python manage.py createsuperuser

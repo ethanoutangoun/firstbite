@@ -22,7 +22,14 @@ AUTH_USER_MODEL = "users.User"
 ALLOWED_HOSTS = []
 
 DATABASES = {
-    "default": config("DATABASE_URL", cast=db_url),
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "railway",
+        "USER": "postgres",
+        "PASSWORD": "OZqzvMFLWBvbGJTHaTCUvqBvTLiHiDtX",
+        "HOST": "roundhouse.proxy.rlwy.net",
+        "PORT": "49729",
+    }
 }
 
 INSTALLED_APPS = [

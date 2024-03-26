@@ -5,7 +5,6 @@ from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
-
 class IndexView(generic.TemplateView):
     template_name = "common/index.html"
 
@@ -25,3 +24,13 @@ class RestViewSet(viewsets.ViewSet):
             },
             status=status.HTTP_200_OK,
         )
+    
+from django.http import JsonResponse
+
+
+
+
+def get_data(request):
+    data = {'message': 'This is a GET request! HEHEHEHE'}
+    return JsonResponse(data)
+
