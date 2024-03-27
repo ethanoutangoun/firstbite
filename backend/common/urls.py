@@ -1,6 +1,7 @@
-from django.urls import path, include
+from django.urls import path, include, re_path
 from . import views
 from django.contrib import admin
+from django.views.generic import TemplateView
 
 app_name = "common"
 urlpatterns = [
@@ -8,5 +9,6 @@ urlpatterns = [
     path("", views.IndexView.as_view(), name="index"),
     path("get-data/", views.get_data, name="get_data"),
     path("admin/", admin.site.urls),
-    path("equipment/", include("equipment.urls"))
+    path("api/equipment/", include("equipment.urls")),
+    re_path(r'^.*', views.IndexView.as_view(), name="index"),
 ]

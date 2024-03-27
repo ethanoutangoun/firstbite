@@ -7,7 +7,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
-import DjangoImgSrc from "../../assets/images/django-logo-negative.png";
+import EquipmentListSkeleton from "../components/EquipmentListSkeleton";
 
 const EquipmentList = () => {
   const history = useHistory();
@@ -33,7 +33,7 @@ const EquipmentList = () => {
 
   useEffect(() => {
     // Initial fetch to get the first page of equipment
-    fetchEquipment("http://localhost:8000/equipment/");
+    fetchEquipment("http://localhost:8000/api/equipment/");
   }, []);
 
   const handleNextPage = () => {
@@ -75,20 +75,16 @@ const EquipmentList = () => {
 
   return (
     <div>
-      <h2>Equipment List</h2>
+      {!loading ? <h2>Equipment List</h2> : <h2>Loading...</h2>}
 
       {!loading && renderEquipmentList()}
-      {loading && <p>Loading...</p>}
+      {loading && <EquipmentListSkeleton />}
 
       <button type="button" onClick={handlePreviousPage}>
         Previous
       </button>
       <button type="button" onClick={handleNextPage}>
         Next
-      </button>
-
-      <button type="button" onClick={() => console.log(equipmentList)}>
-        Log Equipment
       </button>
 
       <button type="button" onClick={() => history.push("/equipment/new")}>

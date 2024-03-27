@@ -9,7 +9,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-content">
-        <h1 onClick={() => history.push("/")}>Navbar</h1>
+        <h1 onClick={() => history.push("/")}>Demo</h1>
       </div>
     </nav>
   );
