@@ -47,9 +47,11 @@ INSTALLED_APPS = [
     "common",
     "users",
     "equipment",
+
 ]
 
 MIDDLEWARE = [
+    
     "debreach.middleware.RandomCommentMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django_permissions_policy.PermissionsPolicyMiddleware",
@@ -60,7 +62,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "csp.middleware.CSPMiddleware",
     "defender.middleware.FailedLoginMiddleware",
 ]
 
@@ -218,6 +219,7 @@ CSP_CONNECT_SRC = [
 CSP_STYLE_SRC = [
     "'self'",
     "'unsafe-inline'",
+    "*"
 ]
 CSP_FONT_SRC = [
     "'self'",
