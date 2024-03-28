@@ -9,7 +9,20 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-content">
-        <h1 onClick={() => history.push("/")}>Demo</h1>
+        <h1 onClick={() => history.push("/")}>Inventory Manager</h1>
+
+        <div className="signin-container">
+          <button className="signin-button" type="button" onClick={() => history.push("/equipment/new")}>
+            Add Equipment
+          </button>
+          <button
+            className="signin-button"
+            type="button"
+            onClick={() => history.push("/signin")}
+          >
+            Sign In
+          </button>
+        </div>
       </div>
     </nav>
   );

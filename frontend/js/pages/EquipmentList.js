@@ -15,6 +15,7 @@ const EquipmentList = () => {
   const [nextPage, setNextPage] = useState(null);
   const [previousPage, setPreviousPage] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [listView, setListView] = useState(false);
 
   const fetchEquipment = async (url) => {
     try {
@@ -23,7 +24,7 @@ const EquipmentList = () => {
       setEquipmentList(results);
       setNextPage(next);
       setPreviousPage(previous);
-      console.log("Fetched equipment data:", results);
+      console.log("Fetched equipment data:", response.data);
     } catch (error) {
       console.error("Error fetching equipment data:", error);
     } finally {
@@ -40,6 +41,7 @@ const EquipmentList = () => {
     if (!nextPage) {
       return;
     }
+    setLoading(true);
     fetchEquipment(nextPage);
   };
 
@@ -47,25 +49,34 @@ const EquipmentList = () => {
     if (!previousPage) {
       return;
     }
-
+    setLoading(true);
     fetchEquipment(previousPage);
   };
 
   // Render the list of equipment
-  const renderEquipmentList = () => {
+  const renderEquipmentList = (listView) => {
     return (
-      <div className="grid-container">
+      <div className={!listView ? "grid-container" : "list-container"}>
         {equipmentList.map((equipment) => (
           <div
             key={equipment.id}
-            className="item-container"
+            className={
+              !listView ? "item-container" : "item-container-list-view"
+            }
             onClick={() => history.push(`/equipment/${equipment.id}`)}
           >
-            <div className="image-container">
-              {equipment.imageUrl && (
-                <img alt={equipment.name} src={equipment.imageUrl} />
-              )}
-            </div>
+            {!listView && (
+              <div className="image-container">
+                {equipment.imageUrl ? (
+                  <img alt={equipment.name} src={equipment.imageUrl} />
+                ) : (
+                  <img
+                    alt="Blank"
+                    src="https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg"
+                  />
+                )}
+              </div>
+            )}
             <h3>{equipment.name}</h3>
           </div>
         ))}
@@ -75,21 +86,41 @@ const EquipmentList = () => {
 
   return (
     <div>
-      {!loading ? <h2>Equipment List</h2> : <h2>Loading...</h2>}
+      {!loading ? (
+        <div className="equipment-list-header">
+          <h2>Equipment List</h2>
 
-      {!loading && renderEquipmentList()}
+          <button type="button" onClick={() => setListView(!listView)}>
+            {!listView ? "List View" : "Grid View"}
+          </button>
+        </div>
+      ) : (
+        <h2>Loading...</h2>
+      )}
+
+      {!loading && renderEquipmentList(listView)}
       {loading && <EquipmentListSkeleton />}
 
-      <button type="button" onClick={handlePreviousPage}>
-        Previous
-      </button>
-      <button type="button" onClick={handleNextPage}>
-        Next
-      </button>
-
-      <button type="button" onClick={() => history.push("/equipment/new")}>
-        Add Equipment
-      </button>
+      {!loading && (
+        <div className="pagination-container">
+          <button
+            className="pagination-button"
+            disabled={!previousPage}
+            type="button"
+            onClick={handlePreviousPage}
+          >
+            Prev
+          </button>
+          <button
+            className="pagination-button"
+            disabled={!nextPage}
+            type="button"
+            onClick={handleNextPage}
+          >
+            Next
+          </button>
+        </div>
+      )}
     </div>
   );
 };
