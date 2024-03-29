@@ -2,17 +2,17 @@
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 
-
 import Navbar from "../components/Navbar";
+
+import BaseRoutes from "./BaseRoutes";
 import EquipmentRoutes from "./EquipmentRoutes";
-import HomeRoutes from "./HomeRoute";
 
 const Routes = () => {
   return (
     <Router>
       <Navbar />
       <div className="content">
-        <HomeRoutes />
+        <BaseRoutes />
         <EquipmentRoutes />
       </div>
     </Router>

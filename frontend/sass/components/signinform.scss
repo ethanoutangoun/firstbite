@@ -1,0 +1,159 @@
+* {
+  font-family: "Raleway", sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.back {
+  font-size: 0.8rem;
+  color: white;
+  cursor: pointer;
+}
+
+.fail {
+  font-size: 0.8rem;
+
+  color: red;
+}
+
+.login-content {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  z-index: 100;
+  align-items: stretch;
+  height: calc(100vh - 20px);
+}
+
+.login-button {
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+form input {
+  width: 400px;
+  height: 50px;
+  padding: 10px;
+  border: none;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+}
+
+form button {
+  width: 400px;
+  height: 50px;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: green;
+  color: white;
+}
+
+.login-form {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.align {
+  height: 100%;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.image-display {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.image-display img {
+  width: 600px;
+  height: auto;
+  object-fit: cover;
+  transform: translate(100px, 20px);
+}
+
+.register-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  gap: 5px;
+}
+
+.register-link p:last-child {
+  font-weight: 500;
+}
+
+.register-link p:last-child:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@media (max-width: 1283px) {
+  .image-display img {
+    height: 0;
+    display: none;
+  }
+
+  .login-content {
+    grid-template-columns: 1fr;
+  }
+
+  .login-form {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-form {
+    padding: 100px;
+  }
+
+  form button {
+    width: 350px;
+  }
+
+  form input {
+    width: 350px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 500px) {
+  form button {
+    width: 320px;
+  }
+
+  form input {
+    width: 320px;
+    font-size: 14px;
+  }
+
+  .login-content {
+    height: 80vh;
+  }
+}
