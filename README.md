@@ -3,6 +3,17 @@
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](code_of_conduct.md)
 [![License: MIT](https://img.shields.io/github/license/vintasoftware/django-react-boilerplate.svg)](LICENSE.txt)
 
+
+## Notes for First Bite
+- Included environment variables for Postgres DB so it is easier to see my prototype app in action.
+- Only admin can post equipment, though viewing is unauthenticated.
+- Admin Credentials for testing:
+-     email: admin@gmail.com
+-     password: password
+- Many to Many relation between Equipment and Restaurant
+- equipment/5/ shows an example of an equipment with associated restaurants
+- Equipment webscraped and imported from: https://www.therestaurantstore.com/categories/52705/reach-in-refrigerators
+
 ## About
 
 A [Django](https://www.djangoproject.com/) project boilerplate/template with a multitude of state-of-the-art libraries and tools. If pairing Django with React is a possibility for your project or spinoff, this is the best solution available. Save time with tools like:
