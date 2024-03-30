@@ -73,11 +73,6 @@ const SignInForm = () => {
               Log In
             </button>
           </form>
-
-          <div className="register-link">
-            <p>Dont have an account?</p>
-            <p>Sign Up</p>
-          </div>
         </div>
       </div>
     </div>

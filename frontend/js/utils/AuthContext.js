@@ -1,28 +1,30 @@
 /* eslint-disable react/prop-types */
-import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
+import React, { createContext, useState, useEffect } from "react";
 
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const [authenticated, setAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Check authentication status when component mounts
+    const checkAuthentication = async () => {
+      try {
+        const response = await axios.get("/api/check-authentication");
+        setAuthenticated(response.data.authenticated);
+      } catch (error) {
+        console.error("Error checking authentication:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     checkAuthentication();
   }, []);
 
-  const checkAuthentication = async () => {
-    try {
-      const response = await axios.get("/api/check-authentication");
-      setAuthenticated(response.data.authenticated);
-    } catch (error) {
-      console.error("Error checking authentication:", error);
-    }
-  };
-
   return (
-    <AuthContext.Provider value={{ authenticated, setAuthenticated }}>
+    <AuthContext.Provider value={{ authenticated, setAuthenticated, loading }}>
       {children}
     </AuthContext.Provider>
   );

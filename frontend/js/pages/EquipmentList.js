@@ -16,6 +16,8 @@ const EquipmentList = () => {
   const [previousPage, setPreviousPage] = useState(null);
   const [loading, setLoading] = useState(true);
   const [listView, setListView] = useState(false);
+  const [showing, setShowing] = useState(0);
+  const [total, setTotal] = useState(0);
 
   const fetchEquipment = async (url) => {
     try {
@@ -24,6 +26,8 @@ const EquipmentList = () => {
       setEquipmentList(results);
       setNextPage(next);
       setPreviousPage(previous);
+      setShowing(results.length);
+      setTotal(response.data.count);
       console.log("Fetched equipment data:", response.data);
     } catch (error) {
       console.error("Error fetching equipment data:", error);
@@ -86,20 +90,22 @@ const EquipmentList = () => {
 
   return (
     <div>
-      {!loading ? (
+      {!loading && (
         <div className="equipment-list-header">
-          <h2>Equipment List</h2>
+          <div className="left-header">
+            <h2>Equipment List</h2>
+            <p>
+              Showing {showing} out of {total} results
+            </p>
+          </div>
 
           <button type="button" onClick={() => setListView(!listView)}>
             {!listView ? "List View" : "Grid View"}
           </button>
         </div>
-      ) : (
-        <h2>Loading...</h2>
       )}
 
-      {!loading && renderEquipmentList(listView)}
-      {loading && <EquipmentListSkeleton />}
+      {!loading ? renderEquipmentList(listView) : <EquipmentListSkeleton />}
 
       {!loading && (
         <div className="pagination-container">

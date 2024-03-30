@@ -19,6 +19,14 @@ class EquipmentPagination(PageNumberPagination):
     page_size_query_param = 'page_size'
     max_page_size = 50
 
+class IsSuperUser(permissions.BasePermission):
+    """
+    Custom permission to only allow superusers to create objects.
+    """
+
+    def has_permission(self, request, view):
+        # Check if the user is authenticated and is a superuser
+        return request.user.is_authenticated and request.user.is_superuser
 
 class EquipmentList(generics.ListCreateAPIView):
     queryset = Equipment.objects.all()
@@ -28,7 +36,7 @@ class EquipmentList(generics.ListCreateAPIView):
     def get_permissions(self):
         if self.request.method == 'POST':
             # Require authentication for POST requests
-            return [permissions.IsAuthenticated()]
+            return [IsSuperUser()]
         # Allow unauthenticated access for GET requests
         return [permissions.AllowAny()]
 

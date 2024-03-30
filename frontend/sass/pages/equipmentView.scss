@@ -1,0 +1,39 @@
+.equipment-view-container {
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: 2fr 3fr;
+
+  h2 {
+    margin: 0;
+    font-size: 18px;
+  }
+
+  p {
+    font-size: 14px;
+    color: #6a6767;
+  }
+}
+
+.equipment-view-right {
+  display: flex;
+  flex-direction: column;
+  border: 1px dashed #ccc;
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+}
+
+.equipment-description {
+  margin-top: 30px;
+  margin-bottom: 60px;
+  padding: 30px;
+  border: 1px solid #ccc;
+
+  p {
+    font-family: "Montserrat", sans-serif;
+    color: #3b3a3a;
+    font-size: 16px;
+  }
+}

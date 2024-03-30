@@ -7,22 +7,24 @@ import "../../sass/pages/equipmentList.scss";
 
 const EquipmentListSkeleton = () => {
   return (
-    <div className="grid-container">
-      <div className="item-container">
-        <div className="image-container-skeleton"></div>
-        <h3></h3>
-      </div>
-      <div className="item-container">
-        <div className="image-container-skeleton"></div>
-        <h3></h3>
-      </div>
-      <div className="item-container">
-        <div className="image-container-skeleton"></div>
-        <h3></h3>
-      </div>
-      <div className="item-container">
-        <div className="image-container-skeleton"></div>
-        <h3></h3>
+    <div className="skeleton-wrapper">
+      <div className="grid-container">
+        <div className="item-container">
+          <div className="image-container-skeleton"></div>
+          <h3></h3>
+        </div>
+        <div className="item-container">
+          <div className="image-container-skeleton"></div>
+          <h3></h3>
+        </div>
+        <div className="item-container">
+          <div className="image-container-skeleton"></div>
+          <h3></h3>
+        </div>
+        <div className="item-container">
+          <div className="image-container-skeleton"></div>
+          <h3></h3>
+        </div>
       </div>
     </div>
   );

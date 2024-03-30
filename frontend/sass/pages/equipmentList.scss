@@ -38,6 +38,16 @@
   align-items: stretch;
 }
 
+.skeleton-wrapper {
+  margin-top: 160px;
+}
+
+.left-header p {
+  margin-top: 4px;
+  font-size: 14px;
+  color: #767575;
+}
+
 .image-container-skeleton {
   position: relative;
   overflow: hidden;
@@ -90,9 +100,9 @@ h2 {
 h3 {
   font-family: "Montserrat", sans-serif;
   margin-top: 6px;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 14px;
-  color: black;
+  color: rgb(88, 85, 85);
 }
 
 img {

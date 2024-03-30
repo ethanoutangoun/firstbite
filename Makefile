@@ -51,3 +51,6 @@ docker_create_superuser:
 
 docker_openshell:
 	docker-compose run --rm backend python manage.py shell
+
+
+	
