@@ -11,7 +11,7 @@
 -     email: admin@gmail.com
 -     password: password
 - Many to Many relation between Equipment and Restaurant
-- equipment/5/ shows an example of an equipment with associated restaurants
+- equipment/5 shows an example of an equipment with associated restaurants
 - Equipment webscraped and imported from: https://www.therestaurantstore.com/categories/52705/reach-in-refrigerators
 
 ## About
