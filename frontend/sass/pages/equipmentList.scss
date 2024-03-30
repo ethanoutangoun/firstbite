@@ -17,6 +17,27 @@
   margin-bottom: 100px;
 }
 
+.list-view-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  p {
+    font-size: 14px;
+    color: #979696;
+  }
+}
+
+.grid-view-flex {
+  display: flex;
+  flex-direction: column;
+
+  p {
+    font-size: 13px;
+    color: #979696;
+  }
+}
+
 .item-container-list-view {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15); /* Add box shadow properties here */
   padding: 20px;

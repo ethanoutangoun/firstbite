@@ -31,7 +31,6 @@ const SignInForm = () => {
     axios
       .post("/api/signin", { email: username, password })
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
           setAuthenticated(true);
         }

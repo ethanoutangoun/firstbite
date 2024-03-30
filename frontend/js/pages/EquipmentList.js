@@ -28,7 +28,7 @@ const EquipmentList = () => {
       setPreviousPage(previous);
       setShowing(results.length);
       setTotal(response.data.count);
-      console.log("Fetched equipment data:", response.data);
+      // console.log("Fetched equipment data:", response.data);
     } catch (error) {
       console.error("Error fetching equipment data:", error);
     } finally {
@@ -76,12 +76,16 @@ const EquipmentList = () => {
                 ) : (
                   <img
                     alt="Blank"
-                    src="https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg"
+                    src="https://www.hopkinsmedicine.org/-/media/feature/noimageavailable.png?h=260&iar=0&mh=260&mw=380&w=380&hash=01CB2D77A5A7FCCDF87DF2ED968048A2"
                   />
                 )}
               </div>
             )}
-            <h3>{equipment.name}</h3>
+
+            <div className={listView ? "list-view-flex" : "grid-view-flex"}>
+              <h3>{equipment.name}</h3>
+              <p>{equipment.serialNumber}</p>
+            </div>
           </div>
         ))}
       </div>

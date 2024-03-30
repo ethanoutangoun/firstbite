@@ -11,15 +11,10 @@ const Navbar = () => {
   const history = useHistory();
   const { authenticated, setAuthenticated, loading } = useContext(AuthContext);
 
-  console.log(authenticated);
-
   const handleLogout = () => {
     axios
       .post("/api/signout")
       .then((response) => {
-        console.log(response);
-        // Handle the response from the server
-        // Redirect to Home after successful signin
         setAuthenticated(false);
 
         history.push("/");

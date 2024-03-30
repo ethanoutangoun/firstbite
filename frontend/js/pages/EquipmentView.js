@@ -8,7 +8,7 @@ const EquipmentView = () => {
   const location = useLocation();
   const [loading, setLoading] = useState(true);
   const [equipment, setEquipment] = useState({});
-  const [restaurants, setRestaurants] = useState([]);
+  const [restaurants, setRestaurants] = useState(null);
   const history = useHistory();
   const fetchEquipment = async (url) => {
     try {
@@ -28,7 +28,7 @@ const EquipmentView = () => {
         `http://localhost:8000/api${location.pathname}/restaurants/`,
       );
       setRestaurants(response.data);
-      console.log("Fetched restaurant data:", response.data);
+      // console.log("Fetched restaurant data:", response.data);
     } catch (error) {
       console.error("Error fetching restaurant data:", error);
     }
@@ -41,40 +41,41 @@ const EquipmentView = () => {
   }, []);
 
   return (
-    <>
-      <div className="equipment-view-container">
-        <div className="equipment-view-left">
-          {loading && <p>Loading equipment details...</p>}
-
-          {!loading && (
-            <div>
-              <h2>{equipment.name}</h2>
-              <p>Serial: {equipment.serialNumber}</p>
-              <img
-                alt={equipment.name}
-                className="equipment-image"
-                src={equipment.imageUrl}
-              />
-            </div>
-          )}
+    !loading &&
+    restaurants && (
+      <>
+        <div className="equipment-view-header">
+          <h2>{equipment.name}</h2>
+          <p>Serial: {equipment.serialNumber}</p>
         </div>
-        <div className="equipment-view-right">
-          <div className="restaurant-list">
-            <h2>Owned By</h2>
-            <ul>
-              {restaurants.map((restaurant) => (
-                <li key={restaurant.id}>{restaurant.name}</li>
-              ))}
-            </ul>
+        <div className="equipment-view-container">
+          <div className="equipment-view-left">
+            {loading && <p>Loading equipment details...</p>}
+
+            {!loading && (
+              <div>
+                <img
+                  alt={equipment.name}
+                  className="equipment-image"
+                  src={equipment.imageUrl}
+                />
+              </div>
+            )}
+          </div>
+          <div className="equipment-view-right">
+            <h2>Used By</h2>
+            {restaurants.length === 0 && <p>No restaurants found</p>}
+            <div className="restaurant-list">
+              <ul>
+                {restaurants.map((restaurant) => (
+                  <li key={restaurant.id}>{restaurant.name}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-
-      <div className="equipment-description">
-        <p>{equipment.description}</p>
-        {equipment.price && <p>Price: {equipment.price}</p>}
-      </div>
-    </>
+      </>
+    )
   );
 };
 

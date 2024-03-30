@@ -35,10 +35,9 @@ const EquipmentEntry = () => {
     try {
       const response = await axios.post("/api/equipment/", formData);
       const { id } = response.data;
-      // console.log("Equipment added:", response.data);
       history.push(`/equipment/${id}`);
     } catch (error) {
-      console.error("Error adding equipment:", error);
+      return error;
     }
   };
 
