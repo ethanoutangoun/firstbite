@@ -14,6 +14,7 @@
 - equipment/5 shows an example of an equipment with associated restaurants
 - Equipment webscraped and imported from: https://www.therestaurantstore.com/categories/52705/reach-in-refrigerators
 - Webscraper uses Selenium and BeautifulSoup to parse website into a CSV, then will import into db using separate script
+- Before moving to production, I would have to write some comprehensive tests on the frontend and backend
 
 ## About
 
