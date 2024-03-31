@@ -40,42 +40,41 @@ const EquipmentView = () => {
     fetchRestaurants();
   }, []);
 
-  return (
-    !loading &&
-    restaurants && (
-      <>
-        <div className="equipment-view-header">
-          <h2>{equipment.name}</h2>
-          <p>Serial: {equipment.serialNumber}</p>
-        </div>
-        <div className="equipment-view-container">
-          <div className="equipment-view-left">
-            {loading && <p>Loading equipment details...</p>}
+  return !loading && restaurants ? (
+    <>
+      <div className="equipment-view-header">
+        <h2>{equipment.name}</h2>
+        <p>Serial: {equipment.serialNumber}</p>
+      </div>
+      <div className="equipment-view-container">
+        <div className="equipment-view-left">
+          {loading && <p>Loading equipment details...</p>}
 
-            {!loading && (
-              <div>
-                <img
-                  alt={equipment.name}
-                  className="equipment-image"
-                  src={equipment.imageUrl}
-                />
-              </div>
-            )}
-          </div>
-          <div className="equipment-view-right">
-            <h2>Used By</h2>
-            {restaurants.length === 0 && <p>No restaurants found</p>}
-            <div className="restaurant-list">
-              <ul>
-                {restaurants.map((restaurant) => (
-                  <li key={restaurant.id}>{restaurant.name}</li>
-                ))}
-              </ul>
+          {!loading && (
+            <div>
+              <img
+                alt={equipment.name}
+                className="equipment-image"
+                src={equipment.imageUrl}
+              />
             </div>
+          )}
+        </div>
+        <div className="equipment-view-right">
+          <h2>Used By</h2>
+          {restaurants.length === 0 && <p>No restaurants found</p>}
+          <div className="restaurant-list">
+            <ul>
+              {restaurants.map((restaurant) => (
+                <li key={restaurant.id}>{restaurant.name}</li>
+              ))}
+            </ul>
           </div>
         </div>
-      </>
-    )
+      </div>
+    </>
+  ) : (
+    <div>Loading...</div>
   );
 };
 
