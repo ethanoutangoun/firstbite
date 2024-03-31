@@ -13,7 +13,7 @@
 - Many to Many relation between Equipment and Restaurant
 - equipment/5 shows an example of an equipment with associated restaurants
 - Equipment webscraped and imported from: https://www.therestaurantstore.com/categories/52705/reach-in-refrigerators
-- Webscraper uses Selenium and BeautifulSoup to parse website into a CSV, then will import into db
+- Webscraper uses Selenium and BeautifulSoup to parse website into a CSV, then will import into db using separate script
 
 ## About
 
